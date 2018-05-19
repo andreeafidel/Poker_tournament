@@ -1,0 +1,24 @@
+	As dori ca tema mea sa fie testata local. Pe checker-ul local primesc 73 de puncte, iar pe cel de pe vmchecker 0.
+
+	In implementarea temei am inceput prin a citi datele din fisierele conf si am construit lista de mese, respectiv lista de jucatori corespunzatoare fiecarei mese. M-am folosit de functiile auxiliare InsJucator si InsMasa, care insereaza elemente in lista. Apoi am citit din fisierul de intrare operatiile si pentru fiecare dintre acestea am realizat o functie auxiliara.
+
+Afisare:
+	In aceasta functie am parcurs lista de mese primita ca parametru, am afisat numele acesteia, apoi am apelat functia AfisareJucatori pentru fiecare masa, care de asemenea parcurge lista de jucatori pana la santinela si afiseaza numele si numarul de maini.
+
+Noroc:
+	Aici am parcurs lista de mese data ca parametru pana am gasit-o pe cea cu numele cautat. In cazul in care am gasit masa in lista de mese, actualizez variabila OKm cu 1, iar daca aceasta ramane pe 0, asa cum este initializata, consider ca numele mesei dat ca parametru este invalid si afisez mesajul corespunzator. Acelasi lucru se intampla si in cazul in care jucatorul dat ca parametru nu se afla la masa respectiva si anume daca variabila OKj ramane 0 se afiseaza mesajul de eroare. De asemenea, incrementez numarul de maini al jucatorului norocos cu variabila grad_noroc.
+
+Ghinion:
+	In aceasta functie sunt pasii asemanatori cu cei de la functia Noroc, doar ca aici se scade numarul de maini al unui jucator, iar daca valoarea numarului ajunge mai mica sau egala cu 0, jucatorul este eliminat de la masa, nr curent de jucatori de la masa , cat si nr curent de jucatori pe toata sala scade. Daca masa ramane fara jucatori este si ea eliminata.
+
+Clasament:
+	Se parcurge lista de mese pana se ajunge la cea cautata si se insereaza jucatorii intr-o noua lista ordonata descrescator dupa nr de maini, iar daca acesta este egal dupa nume. Am ales sa fac o noua functie de afisare, AfisareJucatoriClasament, deoarece in cadrul operatiei clasament jucatorii trebuiau afisati intr-un mod diferit fata de operatia print.
+
+Tura:
+	Cand am gasit masa cautata, am apelat functia Tura_aux care schimba pozitia jucatorilor in jurul santinelei. Apoi am decrementat numarul de maini al fiecarui jucator cu 1, iar daca acesta a ajuns 0, elimin jucatorul de la masa si decrementez nr curent de locuri de la masa si din sala.
+
+Tura_completa:
+	Este aceeasi functie ca Tura, doar ca se aplica tuturor meselor.
+
+Inchide:
+	Cand am gasit masa cautata, calculez nr de locuri libere din sala pentru a vedea daca sunt indeajuns pentru a redistribui jucatorii. Daca nr de locuri libere e mai mic decat nr de jucatori de la masa respectiva, afisez mesajul de eroare si ies din functie. Daca sunt destule locuri libere parcurg din nou lista de mese, calculez nr de locuri libere de la fiecare masa, iar cat timp sunt locuri la masa inserez un jucator de la masa selectata la inceput, incrementez nr curent de jucatori de la masa respectiva
